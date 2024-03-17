@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@color/cardBg" app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:weightSum="2"
+        >
+
+        <ImageView
+            android:id="@+id/image_restaurant"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Restaurant's thumbnail"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:padding="8dp">
+
+            <TextView
+            android:id="@+id/name_restaurant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="Suspicious0dp" />
+
+            <TextView
+                android:id="@+id/address_restaurant"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                tools:ignore="Suspicious0dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/description_restaurant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:textSize="16sp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
