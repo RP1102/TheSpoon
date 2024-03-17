@@ -2,7 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="headerBg">#B0B0B0</color>
+    <color name="gray">#EEEEEE</color>
+    <color name="headerBg">#1CB656</color>
     <color name="cardBg">#DADADA</color>
     <color name="textColor">#FF000000</color>
 </resources>

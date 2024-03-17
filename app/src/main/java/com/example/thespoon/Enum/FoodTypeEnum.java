@@ -1,6 +1,8 @@
 package com.example.thespoon.Enum;
 
-public enum FoodTypeEnum {
+import java.io.Serializable;
+
+public enum FoodTypeEnum implements Serializable {
     FRENCH ("Francaise"),
     ENGLISH ("Anglaise"),
     ASIA ("Asiatique"),
