@@ -3,9 +3,13 @@ package com.example.thespoon;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thespoon.Entity.Restaurant;
 
@@ -20,11 +24,21 @@ public class DetailsRestaurantActivity extends AppCompatActivity {
         if (intent != null && intent.hasExtra("restaurant")) {
             Restaurant restaurant = intent.getParcelableExtra("restaurant");
             if (restaurant != null) {
-                // Récupérez le TextView pour le nom du restaurant
-                TextView restaurantNameTextView = findViewById(R.id.restaurant_name);
-                // Définissez le nom du restaurant dans le TextView
+                // Initialize Recycler view for comments
+                RecyclerView recyclerView = findViewById(R.id.list_comments);
+                AdapterComment adapter = new AdapterComment(restaurant.getCommentList());
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+                View cardRestaurantView = findViewById(R.id.card_restaurant);
+
+                ////
+                TextView restaurantNameTextView = cardRestaurantView.findViewById(R.id.name_restaurant);
+
                 restaurantNameTextView.setText(restaurant.getName());
             }
         }
+
+
     }
 }

@@ -79,7 +79,7 @@ public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.Vi
             averagePriceTextView = itemView.findViewById(R.id.averagePrice_restaurant);
             rateTextView = itemView.findViewById(R.id.rate_restaurant);
 
-            // Définition du clic de l'élément
+            // Ecoute d'un clic sur une carte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

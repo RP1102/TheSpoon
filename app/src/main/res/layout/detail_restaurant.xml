@@ -7,12 +7,34 @@
     <include layout="@layout/header" android:id="@+id/header_layout" />
 
     <!-- Content -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_below="@id/header_layout"
-        >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/header_layout">
+
+        <include layout="@layout/common_main_information" android:id="@+id/card_restaurant" />
+
+        <!-- Titre "Avis" avec le bouton "Laisser un avis" sur la même ligne -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewAvis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avis"
+                android:textSize="14pt"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"/>
+
+
+        <include layout="@layout/common_main_information" android:id="@+id/card_restaurant"/>
+
 
         <TextView
             android:id="@+id/textView"
@@ -20,14 +42,29 @@
             android:layout_height="wrap_content"
             android:text="squidgame -- "
 
-            />
+            <Button
+                android:id="@+id/buttonAddReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Laisser un avis"
+                android:textStyle="bold|italic"
+                android:textAllCaps="false"
+                android:background="@null"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:textColor="@android:color/black"
+                />
 
-        <TextView
-            android:id="@+id/restaurant_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+        </RelativeLayout>
 
-    </LinearLayout>
+        <!-- RecyclerView pour afficher les commentaires -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
+
