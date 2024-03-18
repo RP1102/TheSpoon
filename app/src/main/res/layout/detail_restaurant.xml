@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:layout_below="@id/header_layout">
 
-        <include layout="@layout/common_main_information" android:id="@+id/card_restaurant" />
+        <include layout="@layout/common_main_information" android:id="@+id/restaurant_main_info" />
 
         <!-- Titre "Avis" avec le bouton "Laisser un avis" sur la même ligne -->
         <RelativeLayout

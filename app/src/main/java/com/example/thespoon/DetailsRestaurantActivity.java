@@ -30,12 +30,26 @@ public class DetailsRestaurantActivity extends AppCompatActivity {
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-                View cardRestaurantView = findViewById(R.id.card_restaurant);
+                View restaurantMainInfo = findViewById(R.id.restaurant_main_info);
 
-                ////
-                TextView restaurantNameTextView = cardRestaurantView.findViewById(R.id.name_restaurant);
+                //Linking view elements to selected restaurant data
+                TextView nameTextView = restaurantMainInfo.findViewById(R.id.name_restaurant);
+                ImageView imageImageView = restaurantMainInfo.findViewById(R.id.image_restaurant);
+                TextView addressTextView = restaurantMainInfo.findViewById(R.id.address_restaurant);
+                TextView typeTextView = restaurantMainInfo.findViewById(R.id.type_restaurant);
+                TextView averagePriceTextView = restaurantMainInfo.findViewById(R.id.averagePrice_restaurant);
+                TextView rateTextView = restaurantMainInfo.findViewById(R.id.rate_restaurant);
+                ///
+                nameTextView.setText(restaurant.getName());
+                imageImageView.setImageDrawable(getDrawable(R.drawable.restaurant));
+                addressTextView.setText(restaurant.getAddress());
+                typeTextView.setText(restaurant.getType().getLabel());
+                averagePriceTextView.setText(restaurant.getAveragePrice().toString());
+                rateTextView.setText(restaurant.getRate().getCalculatedRate().toString());
 
-                restaurantNameTextView.setText(restaurant.getName());
+
+
+
             }
         }
 
