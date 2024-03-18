@@ -11,8 +11,15 @@ import com.example.thespoon.Entity.User;
 import com.example.thespoon.Enum.FoodTypeEnum;
 import com.example.thespoon.Entity.Restaurant;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.PopupWindow;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
             int randomNumber = rand.nextInt(10) + 1;
             ratesList.add(randomNumber);
         }
-
-
 
         List<Comment> commentList = new ArrayList<>();
         commentList.add(new Comment(new User("Romain", "PONTACQ"),new Date(), "Sorami le banger","j'ai adoré ", 10));
