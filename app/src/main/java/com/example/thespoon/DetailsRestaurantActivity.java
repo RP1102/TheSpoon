@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thespoon.Entity.Restaurant;
+import com.example.thespoon.Fragment.AddReviewModalFragment;
 
 public class DetailsRestaurantActivity extends AppCompatActivity {
 
@@ -52,10 +53,18 @@ public class DetailsRestaurantActivity extends AppCompatActivity {
 
 
 
+                // ADD REVIEW
+                findViewById(R.id.buttonAddReview).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AddReviewModalFragment dialogFragment = new AddReviewModalFragment();
+                        dialogFragment.show(getSupportFragmentManager(), "AddReviewModalFragment");
+                    }
+                });
+
+
 
             }
         }
-
-
     }
 }

@@ -12,7 +12,6 @@ import com.example.thespoon.Entity.Restaurant;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

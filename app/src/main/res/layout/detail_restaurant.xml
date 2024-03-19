@@ -20,7 +20,7 @@
 
         <include layout="@layout/common_main_information" android:id="@+id/restaurant_main_info" />
 
-            <!-- Titre "Avis" avec le bouton "Laisser un avis" sur la même ligne -->
+            <!-- Titre "Avis" + Bouton "AJouter avis" -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,6 +49,13 @@
                     />
 
             </LinearLayout>
+
+            <!-- Fragment add review-->
+            <FrameLayout
+                android:id="@+id/fragment_add_review_modal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
 
             <!-- RecyclerView pour afficher les commentaires -->
             <androidx.recyclerview.widget.RecyclerView
