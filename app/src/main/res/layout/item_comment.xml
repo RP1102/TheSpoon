@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingClass,MissingConstraints">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                 android:orientation="horizontal"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="2dp">
 
                 <TextView
                     android:id="@+id/firstNameTextView"
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:paddingRight="8sp"
+                    android:paddingEnd="8sp"
                     tools:ignore="MissingConstraints" />
 
                 <TextView
@@ -110,12 +110,10 @@
                 android:id="@+id/dateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textStyle="italic"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                tools:ignore="MissingConstraints" />
+                android:layout_marginBottom="8dp" />
 
         </LinearLayout>
 

@@ -5,22 +5,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thespoon.Entity.Comment;
-import com.example.thespoon.Entity.Comment;
 import com.example.thespoon.Entity.Rate;
 import com.example.thespoon.Entity.User;
 import com.example.thespoon.Enum.FoodTypeEnum;
 import com.example.thespoon.Entity.Restaurant;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.PopupWindow;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.list_restaurants);
 
-        List<Restaurant> restaurants = getRestaurants();
+        List<Restaurant> restaurants;
+        try {
+            restaurants = getRestaurants();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
 
         AdapterRestaurant adapter = new AdapterRestaurant(restaurants);
 
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private List<Restaurant> getRestaurants() {
+    private List<Restaurant> getRestaurants() throws ParseException {
 
         List<Restaurant> restaurantList = new ArrayList<>();
         List<Integer> ratesList = new ArrayList<>();
@@ -68,8 +67,12 @@ public class MainActivity extends AppCompatActivity {
             ratesList.add(randomNumber);
         }
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String dateString = "30/09/2000";
+        Date date = sdf.parse(dateString);
+
         List<Comment> commentList = new ArrayList<>();
-        commentList.add(new Comment(new User("Romain", "PONTACQ"),new Date(), "Sorami le banger","j'ai adoré ", 10));
+        commentList.add(new Comment(new User("Romain", "PONTACQ"),date, "Sorami le banger","j'ai adoré ", 10));
         commentList.add(new Comment(new User("Mathis", "VACHER"),new Date(), "Sorami c'est pafou","j'ai destesté ", 0));
 
         for (int i = 0; i < 5; i++) {
