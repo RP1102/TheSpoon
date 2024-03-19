@@ -74,6 +74,15 @@ public class MainActivity extends AppCompatActivity {
         List<Comment> commentList = new ArrayList<>();
         commentList.add(new Comment(new User("Romain", "PONTACQ"),date, "Sorami le banger","j'ai adoré ", 10));
         commentList.add(new Comment(new User("Mathis", "VACHER"),new Date(), "Sorami c'est pafou","j'ai destesté ", 0));
+        commentList.add(new Comment(new User("Romain", "PONTACQ"),date, "Sorami le banger","j'ai adoré ", 10));
+        commentList.add(new Comment(new User("Mathis", "VACHER"),new Date(), "Sorami c'est pafou","j'ai destesté ", 0));
+        commentList.add(new Comment(new User("Romain", "PONTACQ"),date, "Sorami le banger","j'ai adoré ", 10));
+        commentList.add(new Comment(new User("Mathis", "VACHER"),new Date(), "Sorami c'est pafou","j'ai destesté ", 0));
+        commentList.add(new Comment(new User("Romain", "PONTACQ"),date, "Sorami le banger","j'ai adoré ", 10));
+        commentList.add(new Comment(new User("Mathis", "VACHER"),new Date(), "Sorami c'est pafou","j'ai destesté ", 0));
+        commentList.add(new Comment(new User("Romain", "PONTACQ"),date, "Sorami le banger","j'ai adoré ", 10));
+        commentList.add(new Comment(new User("Mathis", "VACHER"),new Date(), "Sorami c'est pafou","j'ai destesté ", 0));
+
 
         for (int i = 0; i < 5; i++) {
             Restaurant r = new Restaurant("nom_" + i, "description_" + i,"address_" + i,"restaurant", FoodTypeEnum.AFRICA, 10, new Rate(ratesList), commentList);

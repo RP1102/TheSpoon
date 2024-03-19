@@ -2,21 +2,15 @@ package com.example.thespoon.Entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
-
 import java.util.Date;
 
 public class Comment implements Parcelable {
 
 
     private User writer;
-
     private Date date;
-
     private String title;
     private String text;
-
     private Integer rate;
 
     // CONSTRUCTOR

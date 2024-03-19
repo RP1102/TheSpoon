@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/common_main_information" android:id="@+id/card_restaurant" />
+        <include layout="@layout/common_main_information" android:id="@+id/restaurant_main_info" />
 
             <!-- Titre "Avis" avec le bouton "Laisser un avis" sur la même ligne -->
             <LinearLayout
@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Avis"
-                    android:textSize="14pt"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
 
