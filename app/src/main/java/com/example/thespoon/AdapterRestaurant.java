@@ -46,7 +46,7 @@ public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.Vi
         Drawable imageDrawable = holder.itemView.getContext().getResources().getDrawable(R.drawable.restaurant);
         holder.imageImageView.setImageDrawable(imageDrawable);
         holder.addressTextView.setText(restaurant.getAddress());
-        holder.descriptionTextView.setText(restaurant.getDescription());
+        holder.lastCommentTextView.setText('"' + restaurant.getCommentList().get(restaurant.getCommentList().size() - 1).getText() + '"');
         holder.averagePriceTextView.setText(restaurant.getAveragePrice().toString());
         holder.rateTextView.setText(restaurant.getRate().getCalculatedRate().toString());
         holder.typeTextView.setText(restaurant.getType().getLabel());
@@ -63,7 +63,7 @@ public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.Vi
         TextView nameTextView;
         ImageView imageImageView;
         TextView addressTextView;
-        TextView descriptionTextView;
+        TextView lastCommentTextView;
         TextView typeTextView;
         TextView averagePriceTextView;
         TextView rateTextView;
@@ -74,7 +74,7 @@ public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.Vi
             nameTextView = itemView.findViewById(R.id.name_restaurant);
             imageImageView = itemView.findViewById(R.id.image_restaurant);
             addressTextView = itemView.findViewById(R.id.address_restaurant);
-            descriptionTextView = itemView.findViewById(R.id.description_restaurant);
+            lastCommentTextView = itemView.findViewById(R.id.last_comment_restaurant);
             typeTextView = itemView.findViewById(R.id.type_restaurant);
             averagePriceTextView = itemView.findViewById(R.id.averagePrice_restaurant);
             rateTextView = itemView.findViewById(R.id.rate_restaurant);

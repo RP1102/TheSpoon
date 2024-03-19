@@ -37,6 +37,7 @@
             android:paddingHorizontal="8dp">
 
             <LinearLayout
+                android:baselineAligned="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -140,8 +141,10 @@
                     android:text="Dernier commentaire : "
                     />
 
+
                 <TextView
-                    android:id="@+id/description_restaurant"
+                    android:id="@+id/last_comment_restaurant"
+                    android:textStyle="italic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16sp" />
