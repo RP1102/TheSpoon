@@ -10,4 +10,6 @@
 
     <include layout="@layout/common_main_information"/>
 
+
+
 </androidx.cardview.widget.CardView>
