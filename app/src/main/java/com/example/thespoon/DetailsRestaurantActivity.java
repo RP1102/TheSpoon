@@ -38,7 +38,7 @@ public class DetailsRestaurantActivity extends AppCompatActivity {
                 TextView typeTextView = restaurantMainInfo.findViewById(R.id.type_restaurant);
                 TextView averagePriceTextView = restaurantMainInfo.findViewById(R.id.averagePrice_restaurant);
                 TextView rateTextView = restaurantMainInfo.findViewById(R.id.rate_restaurant);
-                TextView lastCommentTextView = restaurantMainInfo.findViewById(R.id.last_comment_restaurant);
+                TextView descriptionTextView = findViewById(R.id.description_restaurant);
 
 
                 nameTextView.setText(restaurant.getName());
@@ -47,7 +47,7 @@ public class DetailsRestaurantActivity extends AppCompatActivity {
                 typeTextView.setText(restaurant.getType().getLabel());
                 averagePriceTextView.setText(restaurant.getAveragePrice().toString());
                 rateTextView.setText(restaurant.getRate().getCalculatedRate().toString());
-                lastCommentTextView.setText('"' + restaurant.getCommentList().get(restaurant.getCommentList().size() - 1).getText() + '"');
+                descriptionTextView.setText(restaurant.getDescription());
 
 
 
