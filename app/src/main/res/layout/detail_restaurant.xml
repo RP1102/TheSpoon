@@ -20,6 +20,34 @@
 
         <include layout="@layout/common_main_information" android:id="@+id/restaurant_main_info" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/less_rounded_bg"
+                android:padding="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="4dp"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:text="À propos : "
+                    />
+
+
+                <TextView
+                    android:id="@+id/description_restaurant"
+                    android:textStyle="italic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
             <!-- Titre "Avis" avec le bouton "Laisser un avis" sur la même ligne -->
             <LinearLayout
                 android:layout_width="match_parent"
