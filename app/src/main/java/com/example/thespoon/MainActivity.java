@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         for (int i = 0; i < 5; i++) {
-            Restaurant r = new Restaurant("nom_" + i, "description_" + i,"address_" + i,"restaurant", FoodTypeEnum.AFRICA, 10, new Rate(ratesList), commentList);
+            Restaurant r = new Restaurant("nom_" + i, "description_" + i,"address_" + i,"test_image", FoodTypeEnum.AFRICA, 10, new Rate(ratesList), commentList);
             restaurantList.add(r);
         }
         return restaurantList;
