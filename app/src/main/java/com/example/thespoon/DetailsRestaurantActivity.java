@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,7 +48,7 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
                 TextView typeTextView = restaurantMainInfo.findViewById(R.id.type_restaurant);
                 TextView averagePriceTextView = restaurantMainInfo.findViewById(R.id.averagePrice_restaurant);
                 TextView rateTextView = restaurantMainInfo.findViewById(R.id.rate_restaurant);
-                TextView lastCommentTextView = restaurantMainInfo.findViewById(R.id.last_comment_restaurant);
+                TextView descriptionTextView = findViewById(R.id.description_restaurant);
 
                 // Set values to view elements
                 nameTextView.setText(restaurant.getName());
@@ -58,7 +57,7 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
                 typeTextView.setText(restaurant.getType().getLabel());
                 averagePriceTextView.setText(restaurant.getAveragePrice().toString());
                 rateTextView.setText(restaurant.getRate().getCalculatedRate().toString());
-                lastCommentTextView.setText('"' + restaurant.getCommentList().get(restaurant.getCommentList().size() - 1).getText() + '"');
+                descriptionTextView.setText(restaurant.getDescription());
 
 
                 // Fetch the restaurant image from drawable
