@@ -20,6 +20,14 @@
 
         <include layout="@layout/common_main_information" android:id="@+id/restaurant_main_info" />
 
+            <fragment
+                android:id="@+id/reservation_fragment"
+                android:name="com.example.thespoon.Fragment.Reservation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="8dp"
+                />
+
             <!-- Titre "Avis" avec le bouton "Laisser un avis" sur la même ligne -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,6 +57,7 @@
                     />
 
             </LinearLayout>
+
 
             <!-- RecyclerView pour afficher les commentaires -->
             <androidx.recyclerview.widget.RecyclerView
