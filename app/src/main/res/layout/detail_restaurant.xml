@@ -86,6 +86,12 @@
 
             </LinearLayout>
 
+            <!-- Fragment add review-->
+            <FrameLayout
+                android:id="@+id/fragment_add_review_modal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
 
             <!-- RecyclerView pour afficher les commentaires -->
             <androidx.recyclerview.widget.RecyclerView
