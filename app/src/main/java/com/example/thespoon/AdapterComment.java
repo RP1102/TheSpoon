@@ -62,7 +62,11 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.ViewHold
 
     @Override
     public int getItemCount() {
-        return commentList.size();
+        if (commentList != null) {
+            return commentList.size();
+        } else {
+            return 0; // Ou une valeur par défaut selon votre logique
+        }
     }
 
 

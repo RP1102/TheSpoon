@@ -56,7 +56,11 @@ public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.Vi
 
     @Override
     public int getItemCount() {
-        return restaurants.size();
+        if (restaurants != null) {
+            return restaurants.size();
+        } else {
+            return 0; // Ou une valeur par défaut selon votre logique
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
