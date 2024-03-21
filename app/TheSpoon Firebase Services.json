@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "274138362578",
+    "firebase_url": "https://thespoon-8adcf-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "thespoon-8adcf",
+    "storage_bucket": "thespoon-8adcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274138362578:android:9e9edadc91722c8a57730b",
+        "android_client_info": {
+          "package_name": "com.example.thespoon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKh3olTDPmZCIqNH-No0vhGL8A-gBF95U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
