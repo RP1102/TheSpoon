@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.thespoon.DatabaseAccess.FirebaseAccess;
 import com.example.thespoon.Entity.Comment;
 import com.example.thespoon.Entity.Rate;
 import com.example.thespoon.Entity.User;
 import com.example.thespoon.Enum.FoodTypeEnum;
 import com.example.thespoon.Entity.Restaurant;
+import com.google.firebase.database.DatabaseReference;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,12 +31,20 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.list_restaurants);
 
+
         List<Restaurant> restaurants;
         try {
             restaurants = getRestaurants();
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+
+        FirebaseAccess firebaseAccess = FirebaseAccess.getInstance();
+        DatabaseReference databaseReference = firebaseAccess.getDatabase().getReference("restaurants");
+
+        String restaurantId = databaseReference.push().getKey();
+
+        databaseReference.child(restaurantId).setValue(restaurants.get(0));
 
         AdapterRestaurant adapter = new AdapterRestaurant(restaurants);
 
