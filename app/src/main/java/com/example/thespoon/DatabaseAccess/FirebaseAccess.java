@@ -22,4 +22,11 @@ public class FirebaseAccess {
         return instance;
     }
 
+    public FirebaseDatabase getDatabase() {
+        return database;
+    }
+
+    public FirebaseStorage getStorage() {
+        return storage;
+    }
 }
