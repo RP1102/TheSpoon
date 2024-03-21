@@ -1,4 +1,4 @@
-package com.example.thespoon;
+package com.example.thespoon.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thespoon.Entity.Comment;
 import com.example.thespoon.Entity.User;
-
-import org.w3c.dom.ls.LSException;
+import com.example.thespoon.R;
 
 import java.util.Date;
 import java.util.List;

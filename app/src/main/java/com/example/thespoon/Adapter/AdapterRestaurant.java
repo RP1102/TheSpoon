@@ -1,7 +1,7 @@
-package com.example.thespoon;
+package com.example.thespoon.Adapter;
+
 
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thespoon.Entity.Comment;
 import com.example.thespoon.Entity.Restaurant;
+import com.example.thespoon.R;
 
 import java.util.List;
 
@@ -49,10 +50,16 @@ public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.Vi
         Comment lastComment = commentList.size() == 0 ? new Comment("toto") :  commentList.stream().filter(c -> c.getRestaurantId().equals(restaurant.getId())).findFirst().get();
 
 
-        Log.d("test", lastComment.getText());
+        int imageResourceId = holder.itemView.getContext().getResources().getIdentifier(restaurant.getImage(), "drawable", holder.itemView.getContext().getPackageName());
+
+        if (imageResourceId != 0) {
+            holder.imageImageView.setImageResource(imageResourceId);
+        } else {
+            Drawable imageDrawable = holder.itemView.getContext().getResources().getDrawable(R.drawable.test_image);
+            holder.imageImageView.setImageDrawable(imageDrawable);
+        }
+
         holder.nameTextView.setText(restaurant.getName());
-        Drawable imageDrawable = holder.itemView.getContext().getResources().getDrawable(R.drawable.test_image);
-        holder.imageImageView.setImageDrawable(imageDrawable);
         holder.addressTextView.setText(restaurant.getAddress());
         holder.lastCommentTextView.setText(restaurant.getAddress());
         holder.lastCommentTextView.setText('"' + lastComment.getText() + '"');

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.thespoon.Adapter.AdapterComment;
 import com.example.thespoon.DatabaseAccess.FirebaseAccess;
 import com.example.thespoon.Entity.Comment;
 import com.example.thespoon.Entity.Restaurant;
@@ -63,7 +63,6 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
 
                 // Set values to view elements
                 nameTextView.setText(restaurant.getName());
-                imageImageView.setImageDrawable(getDrawable(R.drawable.default_image));
                 addressTextView.setText(restaurant.getAddress());
                 typeTextView.setText(restaurant.getType().getLabel());
                 averagePriceTextView.setText(restaurant.getAveragePrice().toString());
