@@ -81,7 +81,14 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
                     }
                 });
 
-
+                findViewById(R.id.app_name).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(DetailsRestaurantActivity.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    }
+                });
 
             }
         }

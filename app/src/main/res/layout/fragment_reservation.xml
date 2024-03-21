@@ -59,24 +59,31 @@
                     android:id="@+id/button_one"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/button"
+                    android:layout_marginRight="4dp"
                     android:text="1" />
 
                 <Button
                     android:id="@+id/button_two"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/button"
+                    android:layout_marginRight="4dp"
                     android:text="2" />
 
                 <Button
                     android:id="@+id/button_three"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/button"
+                    android:layout_marginRight="4dp"
                     android:text="3" />
 
                 <Button
                     android:id="@+id/button_four"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/button"
                     android:text="4" />
 
 
