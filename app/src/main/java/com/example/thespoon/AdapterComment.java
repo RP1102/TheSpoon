@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thespoon.Entity.Comment;
+import com.example.thespoon.Entity.User;
+
+import org.w3c.dom.ls.LSException;
 
 import java.util.Date;
 import java.util.List;
@@ -16,9 +19,11 @@ import java.util.List;
 public class AdapterComment extends RecyclerView.Adapter<AdapterComment.ViewHolder> {
 
     List<Comment> commentList;
+    List<User> userList;
 
-    public AdapterComment(List<Comment> commentList) {
+    public AdapterComment(List<Comment> commentList, List<User> userList) {
         this.commentList = commentList;
+        this.userList = userList;
     }
 
     @NonNull
@@ -31,11 +36,12 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Comment comment = commentList.get(position);
+        User user = userList.stream().filter(u -> u.getId().equals(comment.getWriterId()) ).findFirst().get();
         holder.titleTextView.setText(comment.getTitle());
         holder.rateTextView.setText(comment.getRate().toString());
         holder.contentTextView.setText(comment.getText());
-//        holder.firstNameTextView.setText(comment.getWriter().getFirstName());
-//        holder.lastNameTextView.setText(comment.getWriter().getLastName());
+        holder.firstNameTextView.setText(user.getFirstName());
+        holder.lastNameTextView.setText(user.getLastName());
         holder.dateTextView.setText(formatDateDifference(comment.getDate()));
     }
 

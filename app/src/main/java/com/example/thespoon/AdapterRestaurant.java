@@ -1,6 +1,7 @@
 package com.example.thespoon;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.thespoon.Entity.Comment;
 import com.example.thespoon.Entity.Restaurant;
 
 import java.util.List;
@@ -19,8 +21,11 @@ public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.Vi
 
     private OnItemClickListener listener;
 
-    public AdapterRestaurant(List<Restaurant> restaurants) {
+    private List<Comment> commentList;
+
+    public AdapterRestaurant(List<Restaurant> restaurants, List<Comment> commentList) {
         this.restaurants = restaurants;
+        this.commentList = commentList;
     }
 
     public interface OnItemClickListener {
@@ -41,13 +46,16 @@ public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Restaurant restaurant = restaurants.get(position);
+        Comment lastComment = commentList.size() == 0 ? new Comment("toto") :  commentList.stream().filter(c -> c.getRestaurantId().equals(restaurant.getId())).findFirst().get();
 
+
+        Log.d("test", lastComment.getText());
         holder.nameTextView.setText(restaurant.getName());
         Drawable imageDrawable = holder.itemView.getContext().getResources().getDrawable(R.drawable.test_image);
         holder.imageImageView.setImageDrawable(imageDrawable);
         holder.addressTextView.setText(restaurant.getAddress());
         holder.lastCommentTextView.setText(restaurant.getAddress());
-//        '"' + restaurant.getCommentList().get(restaurant.getCommentList().size() - 1).getText() + '"'
+        holder.lastCommentTextView.setText('"' + lastComment.getText() + '"');
         holder.averagePriceTextView.setText(restaurant.getAveragePrice().toString());
         holder.rateTextView.setText(restaurant.getRate().toString());
         holder.typeTextView.setText(restaurant.getType().getLabel());

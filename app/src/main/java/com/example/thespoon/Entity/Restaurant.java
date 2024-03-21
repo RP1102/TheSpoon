@@ -8,6 +8,7 @@ import com.example.thespoon.Enum.FoodTypeEnum;
 
 public class Restaurant implements Parcelable {
 
+    private String id;
     private String name;
 
     private String description;
@@ -23,7 +24,8 @@ public class Restaurant implements Parcelable {
 
     
     // CONSTRUCTOR
-    public Restaurant(String name, String description, String address, String image, FoodTypeEnum type, Integer averagePrice, Integer rate) {
+    public Restaurant(String id, String name, String description, String address, String image, FoodTypeEnum type, Integer averagePrice, Integer rate) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.address = address;
@@ -39,6 +41,14 @@ public class Restaurant implements Parcelable {
     // GETTERS & SETTERS
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -99,6 +109,7 @@ public class Restaurant implements Parcelable {
         description = in.readString();
         address = in.readString();
         image = in.readString();
+        id = in.readString();
         type = FoodTypeEnum.valueOf(in.readString());
         if (in.readByte() == 0) {
             averagePrice = null;
@@ -132,6 +143,7 @@ public class Restaurant implements Parcelable {
         dest.writeString(description);
         dest.writeString(address);
         dest.writeString(image);
+        dest.writeString(id);
         dest.writeString(type.name());
         if (averagePrice == null) {
             dest.writeByte((byte) 0);
