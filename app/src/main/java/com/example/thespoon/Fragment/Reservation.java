@@ -1,5 +1,6 @@
 package com.example.thespoon.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -27,9 +28,18 @@ public class Reservation extends Fragment {
     CalendarView calendarView;
 
     int nbPerson = 0;
+    private Button lastButtonClicked;
 
     public Reservation() {
         // Required empty public constructor
+    }
+
+    public void changeBtnColor(View v){
+        if(lastButtonClicked != null){
+            lastButtonClicked.setBackgroundColor(Color.parseColor("#DDDDDD"));
+        }
+        lastButtonClicked = (Button) v;
+        lastButtonClicked.setBackgroundColor(Color.parseColor("#CCCCCC"));
     }
 
     @Override
@@ -48,11 +58,13 @@ public class Reservation extends Fragment {
             }
         });
 
+
         Button buttonOne = view.findViewById(R.id.button_one);
         buttonOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 nbPerson = 1;
+                changeBtnColor(v);
             }
         });
 
@@ -61,6 +73,7 @@ public class Reservation extends Fragment {
             @Override
             public void onClick(View v) {
                 nbPerson = 2;
+                changeBtnColor(v);
             }
         });
 
@@ -69,8 +82,7 @@ public class Reservation extends Fragment {
             @Override
             public void onClick(View v) {
                 nbPerson = 3;
-
-            }
+                changeBtnColor(v);}
         });
 
         Button buttonFour = view.findViewById(R.id.button_four);
@@ -78,6 +90,7 @@ public class Reservation extends Fragment {
             @Override
             public void onClick(View v) {
                 nbPerson = 4;
+                changeBtnColor(v);
             }
         });
 
