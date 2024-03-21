@@ -7,25 +7,23 @@ import java.util.Date;
 public class Comment implements Parcelable {
 
 
-    private User writer;
     private Date date;
     private String title;
     private String text;
     private Integer rate;
 
     // CONSTRUCTOR
-    public Comment(User writer, Date date, String title, String text, Integer rate) {
-        this.writer = writer;
+    public Comment(Date date, String title, String text, Integer rate) {
         this.date = date;
         this.title = title;
         this.text = text;
         this.rate = rate;
     }
 
-    // GETTERS & SETTERS
-    public User getWriter() {
-        return writer;
+    public Comment() {
     }
+
+    // GETTERS & SETTERS
 
     public Date getDate() {
         return date;
@@ -41,10 +39,6 @@ public class Comment implements Parcelable {
 
     public Integer getRate() {
         return rate;
-    }
-
-    public void setWriter(User writer) {
-        this.writer = writer;
     }
 
     public void setDate(Date date) {
@@ -65,7 +59,6 @@ public class Comment implements Parcelable {
 
     // IMPLEMENT PARCELABLE
     protected Comment(Parcel in) {
-        writer = in.readParcelable(User.class.getClassLoader());
         date = new Date(in.readLong());
         title = in.readString();
         text = in.readString();
@@ -91,7 +84,6 @@ public class Comment implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(writer, flags);
         dest.writeLong(date.getTime());
         dest.writeString(title);
         dest.writeString(text);

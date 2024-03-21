@@ -34,8 +34,8 @@ public class AdapterComment extends RecyclerView.Adapter<AdapterComment.ViewHold
         holder.titleTextView.setText(comment.getTitle());
         holder.rateTextView.setText(comment.getRate().toString());
         holder.contentTextView.setText(comment.getText());
-        holder.firstNameTextView.setText(comment.getWriter().getFirstName());
-        holder.lastNameTextView.setText(comment.getWriter().getLastName());
+//        holder.firstNameTextView.setText(comment.getWriter().getFirstName());
+//        holder.lastNameTextView.setText(comment.getWriter().getLastName());
         holder.dateTextView.setText(formatDateDifference(comment.getDate()));
     }
 

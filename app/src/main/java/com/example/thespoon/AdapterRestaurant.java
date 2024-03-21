@@ -46,9 +46,10 @@ public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.Vi
         Drawable imageDrawable = holder.itemView.getContext().getResources().getDrawable(R.drawable.test_image);
         holder.imageImageView.setImageDrawable(imageDrawable);
         holder.addressTextView.setText(restaurant.getAddress());
-        holder.lastCommentTextView.setText('"' + restaurant.getCommentList().get(restaurant.getCommentList().size() - 1).getText() + '"');
+        holder.lastCommentTextView.setText(restaurant.getAddress());
+//        '"' + restaurant.getCommentList().get(restaurant.getCommentList().size() - 1).getText() + '"'
         holder.averagePriceTextView.setText(restaurant.getAveragePrice().toString());
-        holder.rateTextView.setText(restaurant.getRate().getCalculatedRate().toString());
+        holder.rateTextView.setText(restaurant.getRate().toString());
         holder.typeTextView.setText(restaurant.getType().getLabel());
 
     }

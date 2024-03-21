@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thespoon.Entity.Comment;
 import com.example.thespoon.Entity.Restaurant;
-import com.example.thespoon.Entity.User;
 import com.example.thespoon.Fragment.AddReviewModalFragment;
 
 import java.util.Date;
@@ -35,7 +34,7 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
             if (restaurant != null) {
                 // Initialize Recycler view for comments
                 RecyclerView recyclerView = findViewById(R.id.list_comments);
-                AdapterComment adapter = new AdapterComment(restaurant.getCommentList());
+                AdapterComment adapter = new AdapterComment(null);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -56,7 +55,7 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
                 addressTextView.setText(restaurant.getAddress());
                 typeTextView.setText(restaurant.getType().getLabel());
                 averagePriceTextView.setText(restaurant.getAveragePrice().toString());
-                rateTextView.setText(restaurant.getRate().getCalculatedRate().toString());
+                rateTextView.setText(restaurant.getRate().toString());
                 descriptionTextView.setText(restaurant.getDescription());
 
 
@@ -106,10 +105,10 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
             Restaurant restaurant = intent.getParcelableExtra("restaurant");
             if (restaurant != null) {
                 // Add new Comment
-                Comment newComment = new Comment(new User(firstName, lastName), date, title, comment, (int) note * 2);
-                restaurant.getCommentList().add(0,newComment);
+                Comment newComment = new Comment(date, title, comment, (int) note * 2);
+//                restaurant.getCommentList().add(0,newComment);
                 // Refresh view list
-                AdapterComment adapter = new AdapterComment(restaurant.getCommentList());
+                AdapterComment adapter = new AdapterComment(null);
                 RecyclerView recyclerView = findViewById(R.id.list_comments);
                 recyclerView.setAdapter(adapter);
             }
