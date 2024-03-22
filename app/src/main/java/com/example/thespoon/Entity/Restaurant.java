@@ -3,16 +3,12 @@ package com.example.thespoon.Entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
 
 import com.example.thespoon.Enum.FoodTypeEnum;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Restaurant implements Parcelable {
 
+    private String id;
     private String name;
 
     private String description;
@@ -24,12 +20,12 @@ public class Restaurant implements Parcelable {
 
     private Integer averagePrice;
 
-    private Rate rate;
+    private Integer rate;
 
-    private List<Comment> commentList;
     
     // CONSTRUCTOR
-    public Restaurant(String name, String description, String address, String image, FoodTypeEnum type, Integer averagePrice, Rate rate, List<Comment> commentList) {
+    public Restaurant(String id, String name, String description, String address, String image, FoodTypeEnum type, Integer averagePrice, Integer rate) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.address = address;
@@ -37,12 +33,22 @@ public class Restaurant implements Parcelable {
         this.type = type;
         this.averagePrice = averagePrice;
         this.rate = rate;
-        this.commentList = commentList;
+    }
+
+    public Restaurant() {
     }
 
     // GETTERS & SETTERS
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -81,11 +87,11 @@ public class Restaurant implements Parcelable {
         return type;
     }
 
-    public void setRate(Rate rate) {
+    public void setRate(Integer rate) {
         this.rate = rate;
     }
 
-    public Rate getRate() {
+    public Integer getRate() {
         return rate;
     }
 
@@ -97,29 +103,21 @@ public class Restaurant implements Parcelable {
         return averagePrice;
     }
 
-    public List<Comment> getCommentList() {
-        return commentList;
-    }
-
-    public void setCommentList(List<Comment> commentList) {
-        this.commentList = commentList;
-    }
-
     // IMPLEMENT PARCELABLE
     protected Restaurant(Parcel in) {
         name = in.readString();
         description = in.readString();
         address = in.readString();
         image = in.readString();
+        id = in.readString();
         type = FoodTypeEnum.valueOf(in.readString());
         if (in.readByte() == 0) {
             averagePrice = null;
         } else {
             averagePrice = in.readInt();
         }
-        rate = in.readParcelable(Rate.class.getClassLoader());
-        commentList = new ArrayList<>();
-        in.readList(commentList, Comment.class.getClassLoader());
+        rate = in.readInt();
+
     }
 
     public static final Creator<Restaurant> CREATOR = new Creator<Restaurant>() {
@@ -145,6 +143,7 @@ public class Restaurant implements Parcelable {
         dest.writeString(description);
         dest.writeString(address);
         dest.writeString(image);
+        dest.writeString(id);
         dest.writeString(type.name());
         if (averagePrice == null) {
             dest.writeByte((byte) 0);
@@ -152,8 +151,7 @@ public class Restaurant implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeInt(averagePrice);
         }
-        dest.writeParcelable(rate, flags);
-        dest.writeList(commentList);
+        dest.writeInt(rate);
     }
 
 }

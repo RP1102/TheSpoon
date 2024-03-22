@@ -9,19 +9,32 @@ public class User implements Parcelable {
 
     private String lastName;
 
+    private String id;
 
 
 
     // CONSTRUCTOR
-    public User(String firstName, String lastName) {
+    public User(String id, String firstName, String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public User(){
     }
 
 
     // GETTERS & SETTERS
     public String getFirstName() {
         return firstName;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getLastName() {
@@ -40,6 +53,7 @@ public class User implements Parcelable {
     protected User(Parcel in) {
         firstName = in.readString();
         lastName = in.readString();
+        id = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -63,5 +77,6 @@ public class User implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(firstName);
         dest.writeString(lastName);
+        dest.writeString(id);
     }
 }

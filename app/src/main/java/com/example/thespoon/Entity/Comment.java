@@ -6,25 +6,48 @@ import java.util.Date;
 
 public class Comment implements Parcelable {
 
+    private String restaurantId;
 
-    private User writer;
+    private String writerId;
     private Date date;
     private String title;
     private String text;
     private Integer rate;
 
     // CONSTRUCTOR
-    public Comment(User writer, Date date, String title, String text, Integer rate) {
-        this.writer = writer;
+    public Comment(String restaurantId, String writerId, Date date, String title, String text, Integer rate) {
+        this.restaurantId = restaurantId;
+        this.writerId = writerId;
         this.date = date;
         this.title = title;
         this.text = text;
         this.rate = rate;
     }
 
+    public Comment() {
+    }
+
+    public Comment(String text) {
+        this.text = text;
+    }
+
     // GETTERS & SETTERS
-    public User getWriter() {
-        return writer;
+
+
+    public String getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    public String getWriterId() {
+        return writerId;
+    }
+
+    public void setWriterId(String writerId) {
+        this.writerId = writerId;
     }
 
     public Date getDate() {
@@ -41,10 +64,6 @@ public class Comment implements Parcelable {
 
     public Integer getRate() {
         return rate;
-    }
-
-    public void setWriter(User writer) {
-        this.writer = writer;
     }
 
     public void setDate(Date date) {
@@ -65,11 +84,12 @@ public class Comment implements Parcelable {
 
     // IMPLEMENT PARCELABLE
     protected Comment(Parcel in) {
-        writer = in.readParcelable(User.class.getClassLoader());
         date = new Date(in.readLong());
         title = in.readString();
         text = in.readString();
         rate = in.readInt();
+        writerId = in.readString();
+        restaurantId = in.readString();
     }
 
     public static final Creator<Comment> CREATOR = new Creator<Comment>() {
@@ -91,9 +111,10 @@ public class Comment implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(writer, flags);
         dest.writeLong(date.getTime());
         dest.writeString(title);
+        dest.writeString(writerId);
+        dest.writeString(restaurantId);
         dest.writeString(text);
         dest.writeInt(rate);
     }

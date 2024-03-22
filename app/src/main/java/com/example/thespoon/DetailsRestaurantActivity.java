@@ -13,12 +13,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.thespoon.Adapter.AdapterComment;
+import com.example.thespoon.DatabaseAccess.FirebaseAccess;
 import com.example.thespoon.Entity.Comment;
 import com.example.thespoon.Entity.Restaurant;
 import com.example.thespoon.Entity.User;
 import com.example.thespoon.Fragment.AddReviewModalFragment;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DetailsRestaurantActivity extends AppCompatActivity implements FragmentListener {
 
@@ -33,9 +42,11 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
         if (intent != null && intent.hasExtra("restaurant")) {
             Restaurant restaurant = intent.getParcelableExtra("restaurant");
             if (restaurant != null) {
+
+                fetchAllWriters(restaurant);
                 // Initialize Recycler view for comments
                 RecyclerView recyclerView = findViewById(R.id.list_comments);
-                AdapterComment adapter = new AdapterComment(restaurant.getCommentList());
+                AdapterComment adapter = new AdapterComment(null, null);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -52,11 +63,10 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
 
                 // Set values to view elements
                 nameTextView.setText(restaurant.getName());
-                imageImageView.setImageDrawable(getDrawable(R.drawable.default_image));
                 addressTextView.setText(restaurant.getAddress());
                 typeTextView.setText(restaurant.getType().getLabel());
                 averagePriceTextView.setText(restaurant.getAveragePrice().toString());
-                rateTextView.setText(restaurant.getRate().getCalculatedRate().toString());
+                rateTextView.setText(restaurant.getRate().toString());
                 descriptionTextView.setText(restaurant.getDescription());
 
 
@@ -105,14 +115,71 @@ public class DetailsRestaurantActivity extends AppCompatActivity implements Frag
         if (intent != null && intent.hasExtra("restaurant")) {
             Restaurant restaurant = intent.getParcelableExtra("restaurant");
             if (restaurant != null) {
-                // Add new Comment
-                Comment newComment = new Comment(new User(firstName, lastName), date, title, comment, (int) note * 2);
-                restaurant.getCommentList().add(0,newComment);
+
+                FirebaseAccess firebaseAccess = FirebaseAccess.getInstance();
+                DatabaseReference databaseReference = firebaseAccess.getDatabase().getReference("users");
+                String newId = databaseReference.push().getKey();
+                databaseReference.child(newId).setValue(new User(newId, firstName, lastName));
+
+                databaseReference = firebaseAccess.getDatabase().getReference("comments");
+                Comment newComment = new Comment(restaurant.getId(), newId, date, title, comment, (int) note * 2);
+                newId = databaseReference.push().getKey();
+                databaseReference.child(newId).setValue(newComment);
+
                 // Refresh view list
-                AdapterComment adapter = new AdapterComment(restaurant.getCommentList());
+                AdapterComment adapter = new AdapterComment(null, null);
                 RecyclerView recyclerView = findViewById(R.id.list_comments);
                 recyclerView.setAdapter(adapter);
             }
         }
+    }
+
+    private void fetchAllWriters(Restaurant restaurant) {
+
+        FirebaseAccess firebaseAccess = FirebaseAccess.getInstance();
+        DatabaseReference databaseReference = firebaseAccess.getDatabase().getReference("users");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<User> userList = new ArrayList<>();
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()) {
+                    User user = userSnapshot.getValue(User.class);
+                    userList.add(user);
+                }
+                fetchCommentsByRestaurant(restaurant, userList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+    private void fetchCommentsByRestaurant(Restaurant restaurant, List<User> userList) {
+
+        FirebaseAccess firebaseAccess = FirebaseAccess.getInstance();
+        DatabaseReference databaseReference = firebaseAccess.getDatabase().getReference("comments");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Comment> commentList = new ArrayList<>();
+                for (DataSnapshot commentSnapshot: dataSnapshot.getChildren()) {
+                    Comment comment = commentSnapshot.getValue(Comment.class);
+                    commentList.add(comment);
+                }
+
+                commentList = commentList.stream().filter(comment -> comment.getRestaurantId().equals(restaurant.getId())).collect(Collectors.toList());
+
+                AdapterComment adapter = new AdapterComment(commentList, userList);
+                RecyclerView recyclerView = findViewById(R.id.list_comments);
+                recyclerView.setAdapter(adapter);
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(DetailsRestaurantActivity.this));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 }
